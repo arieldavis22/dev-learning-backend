@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # namespace :teacher do
+    post "/tsignup", to: "teachers#signup"
+    post "/tlogin", to: "teachers#login"
+    post "/tlogout", to: "teachers#logout"
+    get "/autologin", to: "teachers#autologin"
+  # end
+
+  post "/ssignup", to: "students#signup"
+  post "/slogin", to: "students#login"
+  post "/slogout", to: "students#logout"
+  # get "/sautologin", to: "students#autologin"
 end
