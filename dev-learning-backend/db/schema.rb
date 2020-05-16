@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_183500) do
+ActiveRecord::Schema.define(version: 2020_05_15_230825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_183500) do
 
   create_table "classrooms", force: :cascade do |t|
     t.integer "teacher_id"
-    t.integer "student_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -40,11 +39,18 @@ ActiveRecord::Schema.define(version: 2020_05_13_183500) do
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.integer "points"
-    t.string "deadline"
-    t.string "return_value"
-    t.text "description"
-    t.text "boiler_plate"
     t.integer "teacher_id"
+    t.string "deadline"
+    t.text "return_value"
+    t.text "description"
+    t.text "boilerplate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "student_classrooms", force: :cascade do |t|
+    t.integer "classroom_id"
+    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,26 +58,18 @@ ActiveRecord::Schema.define(version: 2020_05_13_183500) do
   create_table "student_lessons", force: :cascade do |t|
     t.integer "student_id"
     t.integer "lesson_id"
-    t.integer "grade"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
+    t.string "role"
     t.integer "point_average"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "teachers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

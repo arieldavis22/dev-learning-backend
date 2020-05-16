@@ -3,21 +3,13 @@ class ApplicationController < ActionController::API
 
     before_action :authorized
 
-    private
-
-    def current_teacher
-        @current_teacher = Teacher.find_by(id: session[:teacher_id])
+    private 
+    
+    def current_user
+        @current_user = User.find_by(id: session[:user_id])
     end
-
-    def current_student
-        @current_student = Student.find_by(id: session[:student_id])
-    end
-
-    def logged_in?
-        !!current_teacher || !!current_student
-    end
-
+    
     def authorized
-        render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+        render json: { message: 'Please log in' }, status: :unauthorized unless current_user
     end
 end

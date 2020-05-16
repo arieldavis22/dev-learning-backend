@@ -3,11 +3,11 @@ class CreateLessons < ActiveRecord::Migration[6.0]
     create_table :lessons do |t|
       t.string :title
       t.integer :points
-      t.string :deadline
-      t.string :return_value
-      t.text :description
-      t.text :boiler_plate
       t.integer :teacher_id
+      t.string :deadline
+      t.text :return_value
+      t.text :description
+      t.text :boilerplate
 
       t.timestamps
     end
