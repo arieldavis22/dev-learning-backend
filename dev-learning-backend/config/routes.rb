@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
+  # resources :users
+  post "/signup", to: "auth#signup"
+  post "/login", to: "auth#login"
+  post "/logout", to: "auth#logout"
+  get "/autologin", to: "auth#autologin"
 
-  # namespace :teacher do
-    post "/tsignup", to: "teachers#signup"
-    post "/tlogin", to: "teachers#login"
-    post "/tlogout", to: "teachers#logout"
-    get "/autologin", to: "teachers#autologin"
-  # end
+  post "/all-classrooms", to: "users#all_classrooms"
+  post "new-classroom", to: "users#new_classroom"
 
-  post "/ssignup", to: "students#signup"
-  post "/slogin", to: "students#login"
-  post "/slogout", to: "students#logout"
-  # get "/sautologin", to: "students#autologin"
+  post "/newclass", to: "classrooms#new_class"
 end

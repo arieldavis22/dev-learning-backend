@@ -3,7 +3,7 @@ class CreateStudentLessons < ActiveRecord::Migration[6.0]
     create_table :student_lessons do |t|
       t.integer :student_id
       t.integer :lesson_id
-      t.integer :grade
+      t.string :name
 
       t.timestamps
     end
