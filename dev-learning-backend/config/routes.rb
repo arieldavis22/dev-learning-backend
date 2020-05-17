@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   post "/newlesson", to: "lessons#create_lesson"
   post "/all-lessons", to: "lessons#all_lessons"
+
+  post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
 end
