@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/all-students', to: "users#all_students"
   get '/all-teachers', to: "users#all_teachers"
+  post '/following', to: "users#teacher_following"
+  post '/follow', to: "users#teacher_follow"
 
   post '/add-student', to: "student_classrooms#add_student_to_class"
   post 'find-students', to: "student_classrooms#find_students_in_class"
