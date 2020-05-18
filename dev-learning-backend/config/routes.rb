@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "new-classroom", to: "classrooms#new_classroom"
 
   get '/all-students', to: "users#all_students"
+  get '/all-teachers', to: "users#all_teachers"
 
   post '/add-student', to: "student_classrooms#add_student_to_class"
   post 'find-students', to: "student_classrooms#find_students_in_class"
@@ -20,4 +21,7 @@ Rails.application.routes.draw do
   post "/all-lessons", to: "lessons#all_lessons"
 
   post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
+  post "/find-lessons", to: "classroom_lessons#find_classroom_lessons"
+
+  post "/check-code", to: "student_lessons#check_code"
 end
