@@ -1,5 +1,17 @@
 class StudentClassroomsController < ApplicationController
 
+    def delete_student_in_class
+        student_classroom = StudentClassroom.find_by(classroom_id: params[:classroom_id], student_id: params[:student_id])
+
+        if student_classroom
+            student_classroom.destroy
+            student_classroom.save
+            render json: {message: "Student Removed"}
+        else
+            render json: {message: "Student not found"}
+        end
+    end
+
     def add_student_to_class
         classroom = params[:classroom_id]
         student = params[:student_id]

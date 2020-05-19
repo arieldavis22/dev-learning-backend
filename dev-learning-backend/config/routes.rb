@@ -18,14 +18,15 @@ Rails.application.routes.draw do
   post '/add-student', to: "student_classrooms#add_student_to_class"
   post '/find-students', to: "student_classrooms#find_students_in_class"
   post '/find-classrooms', to: "student_classrooms#find_student_classrooms"
+  delete '/remove-student', to: "student_classrooms#delete_student_in_class"
 
   # post "/newclass", to: "classrooms#new_class"
 
   post "/newlesson", to: "lessons#create_lesson"
   post "/all-lessons", to: "lessons#all_lessons"
+  post "/check-code", to: "lessons#check_code"
 
   post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
   post "/find-lessons", to: "classroom_lessons#find_classroom_lessons"
 
-  post "/check-code", to: "student_lessons#check_code"
 end
