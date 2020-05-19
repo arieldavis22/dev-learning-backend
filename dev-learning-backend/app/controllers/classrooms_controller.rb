@@ -1,5 +1,12 @@
 class ClassroomsController < ApplicationController
 
+    def edit_classroom
+        classroom = Classroom.find_by(id: params[:classroom_id])
+        classroom.name = params[:name]
+        classroom.save
+        render json: classroom
+    end
+
     def new_classroom
         user = User.find_by(id: params[:teacher_id])
 

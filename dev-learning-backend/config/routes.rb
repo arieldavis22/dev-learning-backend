@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
   post "/all-classrooms", to: "classrooms#all_classrooms"
   post "/new-classroom", to: "classrooms#new_classroom"
+  patch "/edit-classroom", to: "classrooms#edit_classroom"
 
   get '/all-students', to: "users#all_students"
   get '/all-teachers', to: "users#all_teachers"
   post '/following', to: "users#teacher_following"
   post '/follow', to: "users#teacher_follow"
+  patch '/edit-user', to: "users#update_user"
 
   post '/add-student', to: "student_classrooms#add_student_to_class"
   post '/find-students', to: "student_classrooms#find_students_in_class"

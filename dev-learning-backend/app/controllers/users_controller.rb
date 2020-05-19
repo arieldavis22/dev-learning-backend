@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 
+    def update_user
+        user = User.find_by(id: params[:id])
+
+        user.first_name = params[:first_name]
+        user.last_name = params[:last_name]
+        user.save
+        render json: user
+    end
+
     def teacher_follow
         # follower = User.find_by(id: params[:follower_id])
         # followee = User.find_by(id: params[:followee_id])
