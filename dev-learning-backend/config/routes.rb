@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post '/find-students', to: "student_classrooms#find_students_in_class"
   post '/find-classrooms', to: "student_classrooms#find_student_classrooms"
   delete '/remove-student', to: "student_classrooms#delete_student_in_class"
+  post '/find-student-gpa', to: "student_classrooms#find_student_gpa"
+  post '/correct', to: "student_classrooms#correct_answer"
 
   # post "/newclass", to: "classrooms#new_class"
 

@@ -18,8 +18,7 @@ class AuthController < ApplicationController
             last_name: params[:last_name],
             email: params[:email],
             password: params[:password],
-            role: params[:role],
-            point_average: 100
+            role: params[:role]
         )
 
         if user.valid?
