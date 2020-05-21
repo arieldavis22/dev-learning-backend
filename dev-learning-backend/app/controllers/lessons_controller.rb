@@ -6,7 +6,12 @@ class LessonsController < ApplicationController
 
     def all_lessons
         lessons = Lesson.all.select { |lesson| lesson.teacher_id == params[:teacher_id] }
-        render json: lessons
+        classroom_lessons = ClassroomLesson.all.where(classroom_id: params[:classroom_id])
+        already_in = []
+        classroom_lessons.select{|lesson| already_in << Lesson.find_by(id: lesson.lesson_id)}
+        # byebug
+        not_in = lessons.reject{|lesson| already_in.include? lesson }
+        render json: not_in
     end
 
     def create_lesson

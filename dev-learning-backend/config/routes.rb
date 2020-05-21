@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   post "/new-classroom", to: "classrooms#new_classroom"
   patch "/edit-classroom", to: "classrooms#edit_classroom"
 
-  get '/all-students', to: "users#all_students"
-  get '/all-teachers', to: "users#all_teachers"
+  post '/all-students', to: "users#all_students"
+  post '/all-teachers', to: "users#all_teachers"
   post '/following', to: "users#teacher_following"
   post '/follow', to: "users#teacher_follow"
   patch '/edit-user', to: "users#update_user"
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete '/remove-student', to: "student_classrooms#delete_student_in_class"
   post '/find-student-gpa', to: "student_classrooms#find_student_gpa"
   post '/correct', to: "student_classrooms#correct_answer"
+  post '/wrong', to: "student_classrooms#wrong_answer"
 
   # post "/newclass", to: "classrooms#new_class"
 

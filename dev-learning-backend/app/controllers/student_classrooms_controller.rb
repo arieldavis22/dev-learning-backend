@@ -62,5 +62,18 @@ class StudentClassroomsController < ApplicationController
             render json: {message: "NO POINT AVERAGE"}
         end
     end
+
+    def wrong_answer
+        student_classroom = StudentClassroom.find_by(classroom_id: params[:classroom_id], student_id: params[:student_id])
+        decrease  = (100 / (params[:points] * 10))
+        # student_classroom.point_average += decrease
+        if student_classroom
+            student_classroom.point_average -= decrease
+            student_classroom.save
+            render json: {message: "POINT AVERAGE DECREASED"}
+        else
+            render json: {message: "NO POINT AVERAGE"}
+        end
+    end
     
 end
