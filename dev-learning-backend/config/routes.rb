@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post "/newlesson", to: "lessons#create_lesson"
   post "/all-lessons", to: "lessons#all_lessons"
   post "/check-code", to: "lessons#check_code"
+  post '/test-code', to: "lessons#test_code"
 
   post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
   post "/find-lessons", to: "classroom_lessons#find_classroom_lessons"
