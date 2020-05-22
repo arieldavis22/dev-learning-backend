@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # resources :reports
   # resources :users
   post "/signup", to: "auth#signup"
   post "/login", to: "auth#login"
@@ -32,5 +33,9 @@ Rails.application.routes.draw do
 
   post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
   post "/find-lessons", to: "classroom_lessons#find_classroom_lessons"
+
+  post '/new-report', to: "reports#new_report"
+  post '/reports-for-lesson', to: "reports#reports_for_lesson"
+  delete '/delete-report', to: "reports#delete_report"
 
 end
