@@ -22,7 +22,8 @@ class LessonsController < ApplicationController
             return_value: params[:return_value],
             description: params[:description],
             boilerplate: params[:boilerplate],
-            teacher_id: params[:teacher_id]
+            teacher_id: params[:teacher_id],
+            language: params[:language]
         )
         render json: lesson
     end
@@ -31,7 +32,7 @@ class LessonsController < ApplicationController
         encoded_code = Base64.encode64(params[:code])
         req = RestClient.post(
             'https://api.judge0.com/submissions', 
-            {'source_code' => encoded_code, 'language_id' => 72}, 
+            {'source_code' => encoded_code, 'language_id' => params[:lesson_lang]}, 
             {params: {'base64_encoded' => true, 'wait' => false}}
         )
 
@@ -60,9 +61,10 @@ class LessonsController < ApplicationController
     
     def test_code
         encoded_code = Base64.encode64(params[:code])
+        # byebug
         req = RestClient.post(
             'https://api.judge0.com/submissions', 
-            {'source_code' => encoded_code, 'language_id' => 72}, 
+            {'source_code' => encoded_code, 'language_id' => params[:lesson_lang]}, 
             {params: {'base64_encoded' => true, 'wait' => false}}
         )
 
@@ -80,10 +82,12 @@ class LessonsController < ApplicationController
 
         decoded_code = Base64.decode64(stdout)
 
-        # byebug
-
-
-        render json: decoded_code
+        
+        if params[:lesson_lang] == 63
+            render json: decoded_code.to_json
+        else
+            render json: decoded_code
+        end
 
     end
 end
