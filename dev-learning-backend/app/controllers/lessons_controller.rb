@@ -88,6 +88,20 @@ class LessonsController < ApplicationController
         else
             render json: decoded_code
         end
+    end
 
+    def search_stack
+        uri = RestClient::Resource.new("https://api.stackexchange.com/2.2/search")
+
+        stack_info = uri.get(
+            {params: {
+                'order' => 'desc',
+                'sort' => 'relevance',
+                'intitle' => params[:search],
+                'site' => 'stackoverflow'
+                }}
+        )
+
+        render json: stack_info
     end
 end

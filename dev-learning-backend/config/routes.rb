@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post "/all-lessons", to: "lessons#all_lessons"
   post "/check-code", to: "lessons#check_code"
   post '/test-code', to: "lessons#test_code"
+  post '/search-stack', to: "lessons#search_stack"
 
   post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
   post "/find-lessons", to: "classroom_lessons#find_classroom_lessons"
