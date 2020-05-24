@@ -99,7 +99,7 @@ class LessonsController < ApplicationController
                 'sort' => 'relevance',
                 'intitle' => params[:search],
                 'site' => 'stackoverflow'
-                }}
+            }}
         )
 
         render json: stack_info
