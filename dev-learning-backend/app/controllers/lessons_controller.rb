@@ -104,4 +104,12 @@ class LessonsController < ApplicationController
 
         render json: stack_info
     end
+
+    def remove_lesson
+        ClassroomLesson.where(lesson_id: params[:lesson_id]).destroy_all
+        lesson = Lesson.find_by(id: params[:lesson_id]).destroy
+        lesson.save
+        
+        render json: {message: "Lesson Removed"}
+    end
 end
