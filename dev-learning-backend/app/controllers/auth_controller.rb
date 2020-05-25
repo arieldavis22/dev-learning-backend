@@ -39,4 +39,17 @@ class AuthController < ApplicationController
 
         render json: { message: "Logged out" }
     end
+
+    def change_password
+        user = User.find_by(email: params[:email])
+
+
+        if user.authenticate(params[:currentPassword]) && params[:newPassword] == params[:newPasswordConfirm]
+            user.password = params[:newPassword]
+            user.save
+            render json: {message: "Password Changed"}
+        else
+            render json: {message: "Incorrect Information Entered"}
+        end
+    end
 end

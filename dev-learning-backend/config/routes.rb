@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "/login", to: "auth#login"
   post "/logout", to: "auth#logout"
   get "/autologin", to: "auth#autologin"
+  post '/change-password', to: "auth#change_password"
 
   post "/all-classrooms", to: "classrooms#all_classrooms"
   post "/new-classroom", to: "classrooms#new_classroom"
