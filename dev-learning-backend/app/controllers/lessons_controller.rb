@@ -50,7 +50,9 @@ class LessonsController < ApplicationController
 
         decoded_code = Base64.decode64(stdout)
 
-        if JSON.parse(decoded_code) == params[:return_value]
+        # byebug
+
+        if decoded_code.match(params[:return_value])[0] == params[:return_value]
             render json: {message: "Correct"}
         else
             render json: {message: "Incorrect"}
