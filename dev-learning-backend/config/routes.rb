@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "/all-classrooms", to: "classrooms#all_classrooms"
   post "/new-classroom", to: "classrooms#new_classroom"
   patch "/edit-classroom", to: "classrooms#edit_classroom"
+  delete "/remove-classroom", to: "classrooms#remove_classroom"
 
   post '/all-students', to: "users#all_students"
   post '/all-teachers', to: "users#all_teachers"

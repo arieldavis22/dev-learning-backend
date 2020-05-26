@@ -27,4 +27,12 @@ class ClassroomsController < ApplicationController
         end
     end
 
+    def remove_classroom
+        ClassroomLesson.where(classroom_id: params[:classroom_id]).destroy_all
+        StudentClassroom.where(classroom_id: params[:classroom_id]).destroy_all
+        classroom = Classroom.find_by(id: params[:classroom_id]).destroy
+        classroom.save
+        render json: {message: "Classroom Deleted"}
+    end
+
 end

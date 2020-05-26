@@ -31,7 +31,8 @@ class AuthController < ApplicationController
     end
 
     def autologin
-        render json: @current_user
+        json_user = UserSerializer.new(@current_user).serialized_json
+        render json: json_user
     end
 
     def logout
