@@ -52,8 +52,12 @@ class StudentClassroomsController < ApplicationController
 
     def correct_answer
         student_classroom = StudentClassroom.find_by(classroom_id: params[:classroom_id], student_id: params[:student_id])
-        increase  = (100 / (params[:points] * 10))
-        # student_classroom.point_average += increase
+        if params[:points] < 10
+            increase = 1
+        else
+            increase = ((params[:points] * 10) / 100)
+        end
+
         if student_classroom
             student_classroom.point_average += increase
             student_classroom.save
@@ -65,8 +69,12 @@ class StudentClassroomsController < ApplicationController
 
     def wrong_answer
         student_classroom = StudentClassroom.find_by(classroom_id: params[:classroom_id], student_id: params[:student_id])
-        decrease  = (100 / (params[:points] * 10))
-        # student_classroom.point_average += decrease
+        if params[:points] < 10
+            decrease = 1
+        else
+            decrease = ((params[:points] * 10) / 100)
+        end
+
         if student_classroom
             student_classroom.point_average -= decrease
             student_classroom.save
