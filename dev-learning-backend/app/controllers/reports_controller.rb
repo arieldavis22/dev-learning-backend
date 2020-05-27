@@ -11,7 +11,11 @@ class ReportsController < ApplicationController
 
     def reports_for_lesson
         lesson = Lesson.find_by(id: params[:lesson_id])
-        render json: lesson.reports
+        if lesson
+            render json: lesson.reports
+        else
+            render json: []
+        end
     end
 
     def delete_report

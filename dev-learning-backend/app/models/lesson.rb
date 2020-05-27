@@ -7,6 +7,9 @@ class Lesson < ApplicationRecord
 
     has_many :reports
 
+    has_many :completes
+    has_many :users, through: :completes
+
     validates :teacher_id, teacher_classroom: true
 
 end

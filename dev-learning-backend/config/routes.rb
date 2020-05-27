@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # resources :completes
   # resources :reports
   # resources :users
   post "/signup", to: "auth#signup"
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   post "/new-classroom", to: "classrooms#new_classroom"
   patch "/edit-classroom", to: "classrooms#edit_classroom"
   delete "/remove-classroom", to: "classrooms#remove_classroom"
+  post '/classroom-without-lesson', to: 'classrooms#all_classrooms_without_lesson'
 
   post '/all-students', to: "users#all_students"
   post '/all-teachers', to: "users#all_teachers"
@@ -34,9 +36,11 @@ Rails.application.routes.draw do
   post '/test-code', to: "lessons#test_code"
   post '/search-stack', to: "lessons#search_stack"
   delete '/remove-lesson', to: "lessons#remove_lesson"
+  post '/followed-lessons', to: "lessons#followed_lessons"
 
   post "/lesson-classroom", to: "classroom_lessons#add_lesson_classroom"
   post "/find-lessons", to: "classroom_lessons#find_classroom_lessons"
+  post '/find-all-lessons', to: "classroom_lessons#find_classroom_lessons_all"
 
   post '/new-report', to: "reports#new_report"
   post '/reports-for-lesson', to: "reports#reports_for_lesson"

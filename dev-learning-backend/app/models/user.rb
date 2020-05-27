@@ -15,7 +15,11 @@ class User < ApplicationRecord
     has_many :student_lessons
     has_many :lessons, through: :student_lessons
 
+    has_many :completes
+    has_many :lessons, through: :completes
 
+    validates :first_name, presence: true
+    validates :last_name, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
-
+    validates :role, presence: true
 end

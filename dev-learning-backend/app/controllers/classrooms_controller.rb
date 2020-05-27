@@ -23,7 +23,32 @@ class ClassroomsController < ApplicationController
             user_classrooms = Classroom.all.select { |classroom| classroom.teacher_id == user.id }
             render json: user_classrooms
         else
-            render json: { message: 'Please log in' }, status: :unauthorized
+            render json: [], status: :unauthorized
+        end
+    end
+
+    def all_classrooms_without_lesson
+        user = User.find_by(id: params[:id])
+        if user
+            #loop through classroomlesson
+            #take out classrooms that match lesson_id
+            #return classrooms
+
+            # all_classroom_lessons = ClassroomLesson.all.select { |cl| cl.lesson_id != params[:lesson_id] }
+            # classrooms = []
+            # all_classroom_lessons.map {|cl| classrooms << Classroom.find_by(id: cl.classroom_id)}
+            # # byebug
+            # user_classrooms = classrooms.select { |classroom| classroom.teacher_id == user.id}
+
+            # render json: user_classrooms
+            lesson = Lesson.find_by(id: params[:lesson_id])
+
+            user_classrooms = Classroom.all.select { |classroom| classroom.teacher_id == user.id }
+            classes_not = user_classrooms.select { |classroom| !classroom.lessons.include?(lesson) }
+            # byebug
+            render json: classes_not
+        else
+            render json: [], status: :unauthorized
         end
     end
 

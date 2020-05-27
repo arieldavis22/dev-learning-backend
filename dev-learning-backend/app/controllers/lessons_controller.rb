@@ -14,6 +14,19 @@ class LessonsController < ApplicationController
         render json: not_in
     end
 
+    # def followed_lessons
+    #     classroom_lessons = ClassroomLesson.all.where(lesson_id: params[:lesson_id])
+    #     # already_in = []
+    #     already_in = classroom_lessons.map{|classroom| classroom.classroom_id == params[:classroom_id]}
+
+    #     if(already_in.include?(true))
+    #         render json: true
+    #     else
+    #         render json: false
+    #     end
+    # end
+
+
     def create_lesson
         lesson = Lesson.create(
             title: params[:title],
@@ -52,6 +65,8 @@ class LessonsController < ApplicationController
 
         # byebug
 
+        Complete.create(lesson_id: params[:lesson_id], student_id: params[:student_id], done: true)
+
         if decoded_code.match(params[:return_value])[0] == params[:return_value]
             render json: {message: "Correct"}
         else
@@ -84,11 +99,12 @@ class LessonsController < ApplicationController
 
         decoded_code = Base64.decode64(stdout)
 
+        # byebug
         
         if params[:lesson_lang] == 63
             render json: decoded_code.to_json
         else
-            render json: decoded_code
+            render json: decoded_code.to_json
         end
     end
 
