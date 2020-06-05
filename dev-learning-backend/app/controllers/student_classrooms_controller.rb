@@ -46,7 +46,7 @@ class StudentClassroomsController < ApplicationController
         if student_classroom
             render json: student_classroom.point_average
         else
-            render json: {message: "No GPA"}
+            render json: []
         end
     end
 
