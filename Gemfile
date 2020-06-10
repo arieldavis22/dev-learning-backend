@@ -42,3 +42,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'fast_jsonapi'
 gem 'rest-client', '~> 2.1.0'
+
+gem 'rails_12factor'
+gem 'foreman'
